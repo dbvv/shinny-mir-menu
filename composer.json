@@ -1,0 +1,14 @@
+{
+    "name": "ddbv/db-video-calc",
+    "type": "project",
+    "require": {
+        "opencart/opencart": "2.3",
+        "vlucas/phpdotenv": "^3.3"
+    },
+    "authors": [
+        {
+            "name": "Daniil Borovkov",
+            "email": "daniilborowkow@gmail.com"
+        }
+    ]
+}

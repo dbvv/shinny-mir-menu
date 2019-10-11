@@ -1,0 +1,5 @@
+[-] Initial release
+  [ ] copy html structure
+  [ ] copy megamenu
+  [ ] copy styling
+  [ ] setup admin features
