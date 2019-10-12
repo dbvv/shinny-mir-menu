@@ -155,19 +155,3 @@
       </div>
   </header>
     <!-- end header -->
-
-  <script>
-      if ($(window).width() < 768){
-          $('.menu .navmenutop').addClass('nav_mobile');
-      }
-      $(document).on('click', '.mobile-button', function(){
-          $('.nav_mobile').fadeIn();
-          $(this).addClass('mobile-button_open');
-          $(this).removeClass('mobile-button_active');
-      });
-      $(document).on('click', '.mobile-button_open', function(){
-          $('.nav_mobile').fadeOut();
-          $(this).addClass('mobile-button_active');
-          $(this).removeClass('mobile-button_open');
-      });
-  </script>

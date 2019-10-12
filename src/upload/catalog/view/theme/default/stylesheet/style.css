@@ -12767,3 +12767,7 @@ form.search .searchTerm {
 .head-main .support img {
   margin: 0;
 }
+
+.head-main .cart .dropdown-toggle::after {
+  display: none;
+}

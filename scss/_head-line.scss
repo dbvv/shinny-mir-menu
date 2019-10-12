@@ -107,4 +107,9 @@ form.search {
       margin: 0;
     }
   }
+  .cart {
+    .dropdown-toggle::after {
+      display: none;
+    }
+  }
 }
