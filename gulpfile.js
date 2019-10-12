@@ -13,7 +13,7 @@ gulp.task('copy', function () {
 });
 
 gulp.task('sass', function () {
-  return gulp.src('./scss/stylesheet.scss')
+  return gulp.src('./scss/style.scss')
     .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
     .pipe(gulp.dest('./src/upload/catalog/view/theme/default/stylesheet/'));
 });
