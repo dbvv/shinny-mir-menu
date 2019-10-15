@@ -66,7 +66,7 @@
                               <span class="hidden-xs hidden-sm">
                                   Поддержка:
                               </span>
-                              123456789
+                              <a href="tel:89281122132">8 928 11 22 132</a>
                           </li>
                           <li class="hidden-xs">
                               <a href="/delivery/">
@@ -127,28 +127,7 @@
                       </img>
                   </div>
                   <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12 cart">
-                      <div class="btn-group cart-block" id="cart">
-                          <button class="btn btn-inverse dropdown-toggle" data-loading-text="Загрузка..." data-toggle="dropdown" type="button">
-                              <img alt="" src="catalog/view/theme/default/image/i1.svg">
-                                  <i style="text-transform: uppercase;
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 5px;
-  color: #404755;
-  display: block; font-style: normal;">
-                                      Корзина покупок
-                                  </i>
-                                  0 товар(ов) - 0.00 р.
-                              </img>
-                          </button>
-                          <ul class="dropdown-menu pull-right">
-                              <li>
-                                  <p class="text-center">
-                                      В корзине пусто!
-                                  </p>
-                              </li>
-                          </ul>
-                      </div>
+                      <?php echo $cart; ?>
                   </div>
               </div>
           </div>

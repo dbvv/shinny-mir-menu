@@ -1,28 +1,70 @@
-<div class="cartMiniWrapper" id="cart">
-              <div class="cartMini">
-                <div class="cartMini__icon">
-                  <svg class="icon__cart" width="27px" height="25px"><use xlink:href="#carts">
-                      <svg id="carts" viewBox="0 0 27 25" width="100%" height="100%">
-      <path d="M27 2.6c-.1.4-.2.8-.3 1.1-.7 2.8-1.4 5.6-2.1 8.3 0 .1-.1.3-.1.4-.1.5-.5.8-1 .9h-16c0 .3.1.6.1.8.1.7.3 1.5.4 2.2 0 .2 0 .2.2.2H23c.4.1.7.3.7.7 0 .3-.1.6-.5.8-.2 0-.3.1-.5.1H8c-.7 0-1.3-.4-1.5-1-.1-.3-.1-.6-.2-.8-.3-1.4-.5-2.8-.8-4.1-.2-1.3-.5-2.6-.7-3.8-.2-1.4-.5-2.6-.7-3.9-.2-.9-.3-1.8-.5-2.7 0-.1-.1-.1-.2-.1-.8 0-1.6 0-2.5-.1-.2 0-.9-.1-.9-.8C0 .2.4 0 .8 0h3.7c.3.1.5.3.5.7 0 .1.1.3.1.4 0 .1.1.2.2.4 0 .1.1.2.3.2h20.3c.2 0 .3 0 .5.1.3.1.6.4.7.7-.1 0-.1 0-.1.1zm-7.5 4.9V3.4c0-.1 0-.2-.2-.2h-3.5c-.1 0-.2 0-.2.2v8.2c0 .1 0 .2.2.2h3.5c.2 0 .2 0 .2-.2V7.5zm-4.9-.1V3.3c0-.1 0-.2-.2-.2h-3.5c-.1 0-.2 0-.2.2v8.2c0 .1 0 .2.2.2h3.5c.1 0 .2 0 .2-.2V7.4zm10.3-4.2h-4.2c-.2 0-.2 0-.2.2v8.2c0 .1 0 .2.2.2h2.2c.1 0 .1 0 .2-.1.1-.7.3-1.4.5-2.1.4-1.8.8-3.7 1.2-5.5-.1-.4 0-.7.1-.9zM9.7 11.7V3.4c0-.1 0-.2-.2-.2H5.8v.2c.2.4.3.9.4 1.4.1.7.2 1.5.3 2.2.1.8.2 1.5.4 2.3.1.8.2 1.5.4 2.3 0 .1.1.1.1.1h2.3zM9.1 25c-.1 0-.3 0-.4-.1-1-.2-1.8-1-1.9-2.1-.2-1.3.8-2.6 2.1-2.8 1.4-.2 2.6.6 2.9 2 .3 1.3-.6 2.7-2 2.9-.1 0-.2 0-.3.1h-.4zm11.8 0c-.1 0-.3-.1-.4-.1-1-.2-1.8-1.1-1.9-2.1-.2-1.4.8-2.6 2.1-2.8 1.3-.2 2.6.7 2.9 2 .3 1.3-.7 2.7-2 2.9-.1 0-.2 0-.3.1h-.4z"></path>
-    </svg>
-                  </use></svg>
-                </div>
-                <div class="cartMini__footer">
-                <?php if ($text_items) { ?>
-                  <div class="cartMini__count"> Кол-во товаров:
-                    <span id="cart-total"><?php echo $text_items; ?></span>
-                  </div>
-                  <div class="cartMini__sum"> Итого:
-                    <span><?php echo $tot; ?></span>
-                  </div>
-                  <a href="/cart/" class="cartMini__link" style="display: inline-block;">Оформить заказ</a>
-                  <?php } else { ?>
-                  <style>
-                      .cartMini__empty {display: block}
-                  </style>
-                  <div class="cartMini__empty hidden-sm">Ваша корзина пуста</div>
-				  <div class="cartMini__empty hidde">Корзина пуста</div>
+<div id="cart" class="btn-group cart-block">
+   <button type="button" data-toggle="dropdown" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-inverse  dropdown-toggle">
+      <?php if ($count > 0) { ?><span ><?php echo $count; ?></span><?php } ?>
+      <img src="catalog/view/theme/default/image/i1.svg" alt="">
+      <i style="text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #404755;
+    display: block; font-style: normal;">Корзина покупок</i>
+      <?php echo $text_items; ?>  
+   </button>
+   <ul class="dropdown-menu pull-right">
+      <?php if ($products || $vouchers) { ?>
+      <li>
+         <table class="table table-striped">
+            <?php foreach ($products as $product) { ?>
+            <tr>
+               <td class="text-center"><?php if ($product['thumb']) { ?>
+                  <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-thumbnail" /></a>
                   <?php } ?>
-                </div>
-              </div>
-            </div>
+               </td>
+               <td class="text-left"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
+                  <?php if ($product['option']) { ?>
+                  <?php foreach ($product['option'] as $option) { ?>
+                  <br />
+                  - <small><?php echo $option['name']; ?> <?php echo $option['value']; ?></small>
+                  <?php } ?>
+                  <?php } ?>
+                  <?php if ($product['recurring']) { ?>
+                  <br />
+                  - <small><?php echo $text_recurring; ?> <?php echo $product['recurring']; ?></small>
+                  <?php } ?>
+               </td>
+               <td class="text-right">x <?php echo $product['quantity']; ?></td>
+               <td class="text-right"><?php echo $product['total']; ?></td>
+               <td class="text-center"><button type="button" onclick="cart.remove('<?php echo $product['cart_id']; ?>');" title="<?php echo $button_remove; ?>" class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button></td>
+            </tr>
+            <?php } ?>
+            <?php foreach ($vouchers as $voucher) { ?>
+            <tr>
+               <td class="text-center"></td>
+               <td class="text-left"><?php echo $voucher['description']; ?></td>
+               <td class="text-right">x&nbsp;1</td>
+               <td class="text-right"><?php echo $voucher['amount']; ?></td>
+               <td class="text-center text-danger"><button type="button" onclick="voucher.remove('<?php echo $voucher['key']; ?>');" title="<?php echo $button_remove; ?>" class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button></td>
+            </tr>
+            <?php } ?>
+         </table>
+      </li>
+      <li>
+         <div>
+            <table class="table table-bordered">
+               <?php foreach ($totals as $total) { ?>
+               <tr>
+                  <td class="text-right"><?php echo $total['title']; ?></td>
+                  <td class="text-right"><strong><?php echo $total['text']; ?></strong></td>
+               </tr>
+               <?php } ?>
+            </table>
+            <p class="text-right"><a class="btn btn-bord" href="<?php echo $cart; ?>"><?php echo $text_cart; ?></a>&nbsp;&nbsp;&nbsp;<a class="btn btn-danger hidden-xs" href="<?php echo $checkout; ?>"><?php echo $text_checkout; ?></a></p>
+         </div>
+      </li>
+      <?php } else { ?>
+      <li>
+         <p class="text-center"><?php echo $text_empty; ?></p>
+      </li>
+      <?php } ?>
+   </ul>
+</div>

@@ -12771,3 +12771,102 @@ form.search .searchTerm {
 .head-main .cart .dropdown-toggle::after {
   display: none;
 }
+
+.head-main .cart {
+  margin-top: 0;
+  text-align: center;
+  position: relative;
+  color: #404755;
+}
+
+.cart-block {
+  display: block;
+  width: 100%;
+}
+
+.head-main .cart span {
+  position: absolute;
+  background: #fe9f07;
+  color: #fff;
+  padding: 10px 7px;
+  border-radius: 50%;
+  left: 35px;
+  line-height: 1px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.head-main .cart img {
+  width: 40px;
+  display: inline-block;
+  float: left;
+  margin-right: 15px;
+  margin-top: -5px;
+}
+
+.head-main .cart h5 {
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #404755;
+}
+
+.cart-add-msg {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 10px;
+  background: rgba(255, 64, 129, 0.95);
+  color: #fff;
+  left: 0;
+  right: 0;
+  border-radius: 0;
+  border: 0;
+  text-align: center;
+}
+
+.cart-add-msg a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.cart-add-msg .close {
+  font-size: 32px;
+  opacity: 1;
+  color: #fff;
+  text-shadow: none;
+  margin-top: -5px;
+  line-height: 1;
+}
+
+.head-main .cart .btn-inverse {
+  background: transparent;
+  color: #404755;
+  border: 0;
+  box-shadow: none;
+}
+
+.head-main .cart .btn-inverse:active {
+  background: transparent;
+  color: #404755;
+  border: 0;
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.head-main .cart .btn-inverse:focus {
+  background: transparent;
+  color: #404755;
+  border: 0;
+  box-shadow: none;
+  border-color: transparent;
+}
+
+#cart .dropdown-menu {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  top: 50px;
+}
