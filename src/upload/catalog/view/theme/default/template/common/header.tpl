@@ -134,3 +134,55 @@
       </div>
   </header>
     <!-- end header -->
+
+<?php if ($categories) { ?>
+  <nav class="navbar header-navbar">
+        <div class="pull-left d-none d-xs-block mob-menu">
+           <a href="/specials/">Акции</a>
+           <a href="/contact-us/">Контакты</a>
+        </div>
+        <div class="navbar-header">
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div id="navbar" class="navbar-offcanvas" data-direction="left">
+           <button type="button" class="d-none d-xs-block d-sm-block d-md-none" data-toggle="offcanvas" data-target="#navbar">
+           &#10005;
+           </button>
+           <ul class="nav navbar-nav navbar-left">
+              <li class="active d-none d-lg-block"><a href="/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+              <?php foreach ($categories as $category) { ?>
+              <?php if ($category['children']) { ?>
+              <li class="dropdown dropdown-megamenu">
+                 <a href="<?php echo $category['href']; ?>" class="dropdown-toggle " data-toggle="dropdown" role="button"><?php echo $category['name']; ?> <span class="caret"></span></a>
+                 <ul class="dropdown-menu">
+                    <li>
+                       <div class="megamenu">
+                          <div class="megamenu-lists">
+                             <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
+                             <ul class="megamenu-list list-col-4">
+                                <?php foreach ($children as $child) { ?>
+                                <li><a href="<?php echo $child['href']; ?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i> <?php echo $child['name']; ?></a></li>
+                                <?php } ?>
+                             </ul>
+                             <?php } ?>
+                          </div>
+                       </div>
+                    </li>
+                    <?php if ( $category['href'] != 'javascript:void(0);' ) { ?> 
+                       <li style="background: #f2f2f2;" class="text-center hidden-xs">
+                          <a href="<?php echo $category['href']; ?>" class="see-all"><strong><?php echo $text_all; ?> <?php echo $category['name']; ?></strong></a>
+                       </li>
+                 
+                    <?php } ?>
+                 </ul>
+              </li>
+              <?php } else { ?>
+              <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
+              <?php } ?>
+              <?php } ?>
+           </ul>
+        </div>
+  </nav>
+  <?php } ?>
