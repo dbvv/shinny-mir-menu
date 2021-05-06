@@ -2,7 +2,7 @@
     "name": "ddbv/db-video-calc",
     "type": "project",
     "require": {
-        "opencart/opencart": "2.3",
+        "opencart/opencart": "3.0.3.3",
         "vlucas/phpdotenv": "^3.3"
     },
     "authors": [
